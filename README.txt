@@ -1,3 +1,9 @@
+The app is tested to work on Chrome and Firefox on Mac and PC.
+
+D3 tree visualization code was referenced from the following:
+http://blog.pixelingene.com/2011/07/building-a-tree-diagram-in-d3-js/
+
+==================== #1 ====================
 The files enclosed within this project make up a simple web app which use Backbone's View module to initialize and render two custom modules (Control and Display). 
 
 With the architecture provided by this mini web app achieve the following:
