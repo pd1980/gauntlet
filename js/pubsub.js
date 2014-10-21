@@ -93,7 +93,7 @@ function( _, $){
 				subscriber = subscribers[i]["subscriber"];
 				callback = subscribers[i]["callback"];
 				args = subscribers[i]["args"];
-				callback.apply(subscriber, [data].concat(args));
+				if(callback && subscriber) callback.apply(subscriber, [data].concat(args));
 			}
 
 		}
