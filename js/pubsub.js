@@ -7,6 +7,7 @@ function( _, $){
 
 	var Pubsub = function() {
 		this.subscribers_ = {};
+		this.published_ = [];
 	}
 
 	Pubsub.prototype.guid = (function() {
@@ -65,7 +66,22 @@ function( _, $){
 
 	Pubsub.prototype.publish = function(event, data) {
 
-		var i, length, subscribers, subscriber, callback;
+		this.published_.push([event, data]);
+
+		this.publoop();
+
+	}
+
+	Pubsub.prototype.publoop = function() {
+
+		var event, data, i, length, subscribers, subscriber, callback;
+
+		if(!this.published_.length) return;
+
+		event = this.published_.shift();
+
+		data = event[1];
+		event = event[0];
 
 		if(this.subscribers_[event]) {
 
@@ -82,6 +98,7 @@ function( _, $){
 
 		}
 
+		this.publoop();
 	}
 
 	return Pubsub;
