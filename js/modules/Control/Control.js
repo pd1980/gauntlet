@@ -20,17 +20,17 @@ function( _, $){
   }
 
   Control.prototype.loadData = function(type){
-    var that = this;
     var filename = (type=='test2') ? 'data-tree.json' : 'test-data.json';
 
     $.ajax({
       url: 'data/'+filename+'?'+"bust=" + (new Date()).getTime(),
-    })
-    .done(function(data) {
-      that.options.channel.publish('DATA:LOADED', {type:type, data:data});
-    })
-    .fail(function() {
-      console.log("WARNING: " + this.name + " could not fetch data");
+      context: this,
+      success: function(data) {
+        this.options.channel.publish('DATA:LOADED', {type:type, data:data})
+      },
+      failure: function() {
+        console.log("WARNING: " + this.name + " could not fetch data")
+      }
     });
 
   }
