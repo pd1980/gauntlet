@@ -1,0 +1,27 @@
+# Mac OS X
+.DS_Store
+
+# Node.js
+node_modules/
+
+# SSCS
+.sass-cache/
+
+# UI build files
+/target
+
+logs/
+
+.classpath
+.project
+.settings
+npm-debug.log
+.checkstyle
+bin/
+gitlog
+src/bower_components
+
+# Editors
+.idea/
+*.sublime-project
+*.sublime-workspace
